@@ -1,4 +1,4 @@
-package com.my.personas.dao;
+package com.my.agenda.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.my.personas.entity.Persona;
+import com.my.agenda.entity.Persona;
 
 public class PersonaDAO {
 
@@ -47,6 +47,7 @@ public class PersonaDAO {
 		return personas;
 		
 	}
+	
 	
 	public void savePersona (Persona persona){
 		Connection conn = Conexion.getInstancia().getConexion();

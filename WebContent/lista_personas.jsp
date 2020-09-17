@@ -11,24 +11,27 @@
     <meta name="generator" content="Jekyll v4.1.1">
     <title>Lista Contactos</title>
 
-<!--     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/cover/"> -->
-	
-    <!-- Bootstrap core CSS -->
-<!-- <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet"> -->
-	
 	<link href="css/bootstrap.min.css" rel="stylesheet">
-<!-- 	<link href="css/cover.css" rel="stylesheet"> -->
- 
+	
+ 	<jsp:include page="menu.jsp" />
   </head>
   <body>
+  
    <div class="container-sm mt-4">
    <div class="row">
     <div class="col-8"><h1>Lista Contactos</h1></div>
     <div class="col-4" align="right">
-<!--     <button type="button" class="btn btn-success" onclick="window.location.href = 'registrar_alumno.jsp';">Nuevo Alumno</button> -->
+
     <a href="registrar_persona.jsp" class="btn btn-success">Nuevo Contacto</a>
     <br><br></div>
   	</div>
+  	
+  	<c:if test="${!empty mensaje}">
+  		<div class="alert alert-success">
+  			${mensaje}
+  			<c:remove var="mensaje" scope="session"/>
+  		</div>
+  	</c:if>
    
   	<table class="table">
   <thead class="thead-light">
@@ -42,9 +45,12 @@
     </tr>
   </thead>
   <tbody>
+  
+  <c:set var="x" value="1" />
+  <% int x = 1; %>
  <c:forEach var="persona" items="${listaPersonas}">
   	<tr align="center">
-      <th scope="row">${persona.id}</th>
+      <th scope="row"><%= x %></th>
       <td>${persona.nombres}</td>
       <td>${persona.apellidos}</td>
       <td>${persona.email}</td>
@@ -53,6 +59,7 @@
       <a href="personadb?opcion=modificar&id=${persona.id}" class="btn btn-light">Editar</a>
       <a onclick="return confirm('Desea eliminar?')" href="personadb?opcion=eliminar&id=${persona.id}" class="btn btn-light">Eliminar</a>
     </tr>
+    <% x++; %>
 </c:forEach>
   </tbody>
 </table>

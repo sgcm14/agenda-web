@@ -1,4 +1,4 @@
-package com.my.personas.dao;
+package com.my.agenda.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -10,16 +10,11 @@
     <meta name="generator" content="Jekyll v4.1.1">
     <title>Registrar Contacto</title>
 
-<!--     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/cover/"> -->
-	
-    <!-- Bootstrap core CSS -->
-<!-- <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet"> -->
-	<link href="css/floating-labels.css" rel="stylesheet">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
-<!-- 	<link href="css/cover.css" rel="stylesheet"> -->
- 
+	<jsp:include page="menu.jsp" />
   </head>
   <body>
+  <div class="container-sm mt-4">
    <form action="personadb" method="post" class="form-signin">
    <input type="hidden" class="form-control" name="opcion" value="insertar">
    <h1>Registrar Contacto</h1><br>
@@ -39,16 +34,11 @@
     <label>Celular</label>
     <input type="text" class="form-control" name="celular">
   </div>
-  <!-- <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div> -->
   <button type="submit" class="btn btn-primary">Grabar</button>
   <a href="personadb" class="btn btn-secondary">Cancelar</a>
   
 </form>
-  
-
+</div>
 
 </body>
 </html>
