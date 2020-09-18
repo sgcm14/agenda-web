@@ -24,13 +24,13 @@
         <a class="nav-link" href="personadb">Inicio <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="registrar_persona.jsp">Nuevo Contacto</a>
+        <a class="nav-link" href="personadb?opcion=registrar">Nuevo Contacto</a>
       </li>
     </ul>
     <form class="form-inline mt-2 mt-md-0">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-    <a class="nav-link">${usuario.nombres} ${usuario.apellidos}</a>
+    <a class="nav-link">${usuario.nombres.toUpperCase().charAt(0)}${usuario.nombres.substring(1, usuario.nombres.length())} ${usuario.apellidos.toUpperCase()}</a>
      </li>
     </ul>
       <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"> -->

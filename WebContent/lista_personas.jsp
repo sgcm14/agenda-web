@@ -12,7 +12,11 @@
     <title>Lista Contactos</title>
 
 	<link href="css/bootstrap.min.css" rel="stylesheet">
-	
+	<!--datables CSS básico-->
+    <link rel="stylesheet" type="text/css" href="datatables/datatables.min.css"/>
+    <!--datables estilo bootstrap 4 CSS-->  
+    <link rel="stylesheet"  type="text/css" href="datatables/css/dataTables.bootstrap4.min.css">
+    
  	<jsp:include page="menu.jsp" />
   </head>
   <body>
@@ -22,7 +26,7 @@
     <div class="col-8"><h1>Lista Contactos</h1></div>
     <div class="col-4" align="right">
 
-    <a href="registrar_persona.jsp" class="btn btn-success">Nuevo Contacto</a>
+    <a href="personadb?opcion=registrar" class="btn btn-primary">Nuevo Contacto</a>
     <br><br></div>
   	</div>
   	
@@ -32,8 +36,8 @@
   			<c:remove var="mensaje" scope="session"/>
   		</div>
   	</c:if>
-   
-  	<table class="table">
+  <div class="table-responsive">  
+  <table id="example" class="table table-striped table-bordered" style="width:100%">
   <thead class="thead-light">
     <tr align="center">
       <th scope="col">#</th>
@@ -51,19 +55,28 @@
  <c:forEach var="persona" items="${listaPersonas}">
   	<tr align="center">
       <th scope="row"><%= x %></th>
-      <td>${persona.nombres}</td>
-      <td>${persona.apellidos}</td>
+      <td>${persona.nombres.toUpperCase().charAt(0)}${persona.nombres.substring(1, persona.nombres.length())}</td>
+      <td>${persona.apellidos.toUpperCase()}</td>
       <td>${persona.email}</td>
       <td>${persona.celular}</td>
       <td>
-      <a href="personadb?opcion=modificar&id=${persona.id}" class="btn btn-light">Editar</a>
-      <a onclick="return confirm('Desea eliminar?')" href="personadb?opcion=eliminar&id=${persona.id}" class="btn btn-light">Eliminar</a>
+      <a href="personadb?opcion=modificar&id=${persona.id}" class="btn btn-outline-primary">Editar</a>
+      <a onclick="return confirm('Desea eliminar?')" href="personadb?opcion=eliminar&id=${persona.id}" class="btn btn-outline-primary">Eliminar</a>
     </tr>
     <% x++; %>
 </c:forEach>
   </tbody>
-</table>
+</table></div>
   
 </div>
+
+<!-- jQuery, Popper.js, Bootstrap JS -->
+    <script src="jquery/jquery-3.3.1.min.js"></script>
+    <script src="popper/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+        
+    <!-- datatables JS -->
+    <script type="text/javascript" src="main.js"></script>  
+    <script type="text/javascript" src="datatables/datatables.min.js"></script>
 </body>
 </html>

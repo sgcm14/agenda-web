@@ -38,7 +38,11 @@ public class PersonaController extends HttpServlet {
 		String opcion = (request.getParameter("opcion") != null) ? request.getParameter("opcion") : "";
 		
 		switch(opcion) {
-		 case "modificar": 
+		case "registrar": 
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/registrar_persona.jsp");
+			dispatcher.forward(request, response);
+			 break;		
+		case "modificar": 
 			 this.editarPersona(request, response);
 			 break;
 		 case "eliminar": 
@@ -62,6 +66,8 @@ public class PersonaController extends HttpServlet {
 		String id = request.getParameter("id");
 		persona.setId(Integer.parseInt(id));
 		daoPersona.deletePersona(persona);
+		HttpSession sesion = request.getSession();
+		sesion.setAttribute("mensaje", "Contacto eliminado correctamente");
 		response.sendRedirect("personadb");
 	}
 	
@@ -76,6 +82,7 @@ public class PersonaController extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/modificar_persona.jsp");
 		dispatcher.forward(request, response);
 	}
+	
 	
 	
 	private void listarPersonas(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -106,6 +113,8 @@ public class PersonaController extends HttpServlet {
 				
 				if(opcion.equals("insertar")) {
 					daoPersona.savePersona(persona);
+					HttpSession sesion = request.getSession();
+					sesion.setAttribute("mensaje", "Contacto añadido correctamente");
 					response.sendRedirect("personadb");
 					
 				} else if(opcion.equals("actualizar")) {

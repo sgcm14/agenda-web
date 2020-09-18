@@ -16,6 +16,7 @@
   <body>
   <div class="container-sm mt-4">
    <form action="personadb" method="post" class="form-signin">
+   
    <input type="hidden" class="form-control" name="opcion" value="insertar">
    <h1>Registrar Contacto</h1><br>
   <div class="form-group">
